@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+
+    <!-- JS only -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+    <script src="eel.js"></script>
+
+    <link rel="icon" type="image/png" href="/icon.ico">
+
+    <title>Family Budget</title>
+
+</head>
+<body style="background-color: #0F4C75">
+<div class="container">
+    <div class="main">
+        <!--Go back button-->
+        <button class="go-home-btn btn btn-secondary col-md-1" id="go-home-btn" onclick="CloseHistoryWindow();" style="display:none;">Go home</button>
+        <button class="go-back-btn btn btn-secondary col-md-1" id="go-back-btn" onclick="CloseLearnMoreWindow();" style="display:none;">Go back</button>
+
+        <h1 id="header">Family Budget</h1>
+        <div class="inc-or-exp">
+                <div class="Income" id="Incomes-open">
+                    <button class="btn btn-secondary"  onclick="OpenIncomeWindow();" id="option1">Incomes</button>
+
+                </div>
+
+                <div class="Expense" id="Expenses-open">
+                    <input onclick="OpenExpenseWindow();" type="button" class="btn-check" name="options" id="option2">
+                    <label class="btn btn-secondary" for="option2">Expense</label>
+                </div>
+
+                <div class="Debts" id="Debts-open">
+                    <input onclick="OpenDebtsWindow();" type="button" class="btn-check" name="options" id="option3">
+                    <label class="btn btn-secondary" for="option3">Debts</label>
+                </div>
+
+
+
+                <!--Income-->
+                <div id="IncomeWindow">
+                    <p class="incomes-header">Your Income Here</p>
+                       <div class="tag-input tags-inc">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputTagSelectInc">Tag</label>
+
+                                <select class="form-select" name="tag_select" id="inputTagSelectInc">
+                                    <option value="Salary" selected>Salary</option>
+                                    <option value="Upfront">Upfront</option>
+                                    <option value="Pay-debt">Pay Debt</option>
+                                    <option value="Found">Found</option>
+                                    <option value="Investment">Investment</option>
+                                </select>
+                            </div>
+                       </div>
+
+                        <div class="money-get-amount">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">₽</span>
+                                <span class="input-group-text">0.00</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="Enter the profit amount..." id="amountOfMoneyGet" aria-label="Rubles amount (with dot and two decimal places)">
+                            </div>
+                        <div class="date">
+                                <div class="input-group">
+                                    <input class="form-control date" id="dateInc" type="date" onkeydown="return false" placeholder="Enter the date...">
+                                </div>
+                        </div>
+                        </div>
+                        <div class="alert alert-danger " role="alert" id="alert-money-inc" style="display: none">
+                            Error! Check that the entered data is correct!
+                        </div>
+                        <button class="btn btn-secondary" onclick="income(); clear_values_incomes();">Send</button>
+
+                </div>
+
+
+                <!--Expenses-->
+                <div id="ExpenseWindow">
+                    <p class="expense-header">Your Expenses Here</p>
+                        <div class="tag-input tags-exp">
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputTagSelectExp">Tag</label>
+
+                                <select class="form-select" name="tag_select" id="inputTagSelectExp">
+                                    <option selected>Other</option>
+                                    <option value="Credits">Credits</option>
+                                    <option value="Utility-bills">Utility bills</option>
+                                    <option value="Snacks">Snacks</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Medical">Medical</option>
+                                    <option value="Investment">Investment</option>
+                                    <option value="Sport">Sport</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="money-spent-amount">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">₽</span>
+                                <span class="input-group-text">0.00</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="Enter the amount of money spent..." id="amountOfMoneySpent" aria-label="Rubles amount (with dot and two decimal places)">
+                            </div>
+
+                            <div class="date">
+                                <div class="input-group">
+                                    <input class="form-control date" id="dateExp" type="date" onkeydown="return false" placeholder="Enter the date...">
+                                </div>
+                            </div>
+
+                            <div class="alert alert-danger" role="alert" id="alert-money-exp" style="display: none">
+                                Error! Check that the entered data is correct!
+                            </div>
+                            <button class="btn btn-secondary" onclick="expense(); clear_values_expenses();">Send</button>
+                        </div>
+                </div>
+
+
+                <!--Debts-->
+                <div id="DebtWindow">
+                    <p class="debts-header">Your Debts Here</p>
+
+                    <div class="moneylenders-name">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Name</span>
+                                <input type="text" class="form-control" id="moneylenders-name" placeholder="Enter name..." aria-label="Name of moneylender">
+                            </div>
+                    </div>
+
+                    <div class="amount-of-debt">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">₽</span>
+                                <span class="input-group-text">0.00</span>
+                                <input type="number" step="0.01" class="form-control" placeholder="Enter the amount of money borrowed..." id="amount-of-debt" aria-label="Rubles amount (with dot and two decimal places)">
+                            </div>
+                             <div class="date">
+                                <div class="input-group">
+                                    <input class="form-control date" id="dateDebt" type="date" onkeydown="return false" placeholder="Enter the date...">
+                                </div>
+                             </div>
+                            <div class="alert alert-danger" role="alert" id="alert-money-debt" style="display: none">
+                                Error! Check that the entered data is correct!
+                            </div>
+
+                            <button class="btn btn-secondary" onclick="debt(); clear_values_debts();">Send</button>
+                    </div>
+                </div>
+        </div>
+
+        <!--Go to history-->
+        <div class="go-to-history">
+            <button class="btn btn-secondary" id="open-history-btn" onclick="OpenHistoryWindow(); show_total_month_profit();
+            show_month_rest_of_money(); show_total_month_expenses();">Go to history page!</button>
+        </div>
+
+        <!--History page-->
+        <div class="history col-sm-12" id="history" style="display: none;">
+
+            <div id="incomes-history" style="cursor: pointer;" class="incomes-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12"
+            onclick="learn_more_incomes();">
+                <h1 class="" id="show-total-month-profit">Your income will be here</h1>
+            </div>
+
+
+            <div id="expenses-history" style="cursor: pointer;" onclick="learn_more_expenses();" class="expenses-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
+                <h1 id="show-total-mouth-expenses">Your expenses will be here</h1>
+            </div>
+
+            <div id="rest-history" class="rest-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
+                <h1 id="show-month-rest-money">Your rest will be here</h1>
+            </div>
+
+
+
+        </div>
+
+        <!--Learn More income page -->
+        <div class="learn-more" id="learn-more-incomes" style="display: none;">
+            <h1>Learn more about income</h1>
+
+            <div class="date">
+                <div class="input-group">
+                    <input class="form-control date date-month mt-5 " id="select-month-income" value="2019-09" type="month" onkeydown="return false" placeholder="Enter the date...">
+                </div>
+            </div>
+            <div class="alert alert-danger" role="alert" id="alert-learn-more-inc" style="display: none">
+                Error! Check that the entered data is correct!
+            </div>
+            <button onclick="get_data_from_learn_more_inc(); show_selected_month_incomes();" class="btn btn-secondary">Send</button>
+            <div id="show-data-inc" class="show-data bg-secondary" >
+                <div id="by-tags" class="by-tags-inc">
+
+                    <p id="Salary-tag">Salary: </p>
+                    <p id="Upfront-tag">Upfront: </p>
+                    <p id="Pay-debts-tag">Pay debts: </p>
+                    <p id="Found-tag">Found: </p>
+                    <p id="Investment-inc-tag">Investment: </p>
+
+                </div>
+                <div class="all">
+                    <h1 id="show-inc">All income for the selected month: </h1>
+                </div>
+            </div>
+        </div>
+
+        <!--Learn More expenses page -->
+        <div class="learn-more" id="learn-more-expenses" style="display: none;">
+            <h1>Learn more about expenses</h1>
+
+            <div id="select-month-expenses" class="select-month">
+                <div class="date">
+                    <div class="input-group">
+                        <input class="form-control date date-month mt-5" id="select-month-expense" value="2021-01" type="month" onkeydown="return false" placeholder="Enter the date...">
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" id="alert-learn-more-exp" style="display: none">
+                    Error! Check that the entered data is correct!
+                </div>
+                <button onclick="get_data_from_learn_more_exp(); show_selected_month_expenses();" class="btn btn-secondary">Send</button>
+            </div>
+
+
+            <div id="show-data-exp" class="show-data bg-secondary">
+
+                <div class="by-tags-exp">
+                    <br>
+                        <p class="tag-exp-selected-month" id="Other-tag">Other: </p>
+                        <p class="tag-exp-selected-month" id="Credits-tag">Credits: </p>
+                        <p class="tag-exp-selected-month" id="Utility-bills-tag">Utility bills: </p>
+                        <p class="tag-exp-selected-month" id="Snacks-tag">Snacks: </p>
+                        <p class="tag-exp-selected-month" id="Food-tag">Food: </p>
+                        <p class="tag-exp-selected-month" id="Medical-tag">Medical: </p>
+                        <p class="tag-exp-selected-month" id="Investment-exp-tag">Investment: </p>
+                        <p class="tag-exp-selected-month" id="Sport-tag">Sport: </p>
+                </div>
+                <div class="all">
+                    <h1 id="show-exp">All expenses for the selected month: </h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

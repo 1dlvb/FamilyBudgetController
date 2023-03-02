@@ -1,0 +1,310 @@
+/*#1B262C*/
+/*#0F4C75*/
+/*#3282B8*/
+/*#BBE1FA*/
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;800&display=swap');
+html { overflow-x: hidden; }
+body{
+	height: 100%;
+	width: 100%;
+	min-width:  300px; 
+	background-color: #fff;
+	background: url(money-bag.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;	
+
+}
+body p, a, h1{
+	font-family: 'Mukta', sans-serif;
+
+}
+body h1{
+	text-align: center;
+	color: #ffffff;
+}
+
+button:active, button:focus {
+  outline: none !important;
+}
+
+.main{
+	justify-content: center;
+	margin-top: 25px;
+	width: 100%;
+	height: 100%;
+
+}
+.inc-or-exp{
+	text-align: center;
+	margin-left: 
+	margin-right: auto;
+	margin-top: 25px;
+	width: 100%;
+	height: 40px;
+
+}
+.date{
+	margin-bottom: 5px;
+}
+.error{
+	margin-top: 10px;
+}
+.Income{
+	
+	width: 85px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.Expense{
+
+	width: 85px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.Debts{
+	width: 85px;
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: -10px;
+}
+
+
+#IncomeWindow{
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	height: 650px;
+	background-color: #fff;
+	border: solid 1px #1B262C;
+	margin-top: 50px;
+}
+
+.incomes-header{
+	margin-top: 15px;
+	font-size: 25px;
+	font-weight: 600;
+
+}
+.money-get-amount{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+
+#ExpenseWindow{
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	height: 650px;
+	background-color: #fff;
+	border: solid 1px #1B262C;
+	margin-top: 50px;
+}
+.expense-header{
+	margin-top: 15px;
+	font-size: 25px;
+	font-weight: 600;
+
+}
+
+.tag-input{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.money-spent-amount{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+
+
+#DebtWindow{
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 650px;
+	background-color: #fff;
+	border: solid 1px #1B262C;
+	margin-top: 50px;
+}
+.debts-header{
+	margin-top: 15px;
+	font-size: 25px;
+	font-weight: 600;
+}
+.moneylenders-name{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;	
+}
+.amount-of-debt{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+
+.go-to-history{
+	width: 80%;
+	height: 35px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 8px;
+	justify-content: center;
+	text-align: center;
+}
+
+
+.go-home-btn{float: left;}
+.go-back-btn{float: left;}
+
+.history{
+	width: 100%;
+	height: 100%;
+	margin-top: 25px;
+	overflow: auto;
+}
+
+.incomes-history-page{
+	width: 100%;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+
+.expenses-history-page{
+	width: 100%;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+.rest-history-page{
+	width: 100%;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;	
+}
+.debts-history-page{
+	width: 100%;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+}
+
+.show-data{
+	position: relative;
+
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	height: 500px;
+	background-color: #fff;
+	border: solid 1px #1B262C;
+	margin-top: 50px;
+
+}
+.by-tags-exp{
+	margin-left: 10px;
+	float: left;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	height: 100%;
+	width: 100%;
+	margin-top: -10px;
+}
+
+.by-tags-inc{
+	margin-left: 10px;
+	float: left;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 500;
+	height: 100%;
+	width: 100%;
+	margin-top: 10px;
+}
+.all{
+	position: absolute;
+	background-color: #585F66;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	width: 100%;
+	height: 100px;
+	bottom: 0px;
+}
+.header-tags{
+	position: absolute;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	width: 100%;
+	height: 100px;
+	margin-bottom: 10px;
+}
+
+.header_tags_selected_month{
+	font-size: 25px;
+}
+.tags{
+	width: 100%;
+	height: 250px;
+	background-color: #000;
+}
+.tag-exp-selected-month{
+	font-size: 20px;
+
+}
+#show-inc{
+
+	float: left;
+	color: #fff;
+	font-size: 25px;
+
+}
+#show-exp{
+
+	float: left;
+	color: #fff;
+	font-size: 25px;
+}
+
+/* width */
+::-webkit-scrollbar{
+  width: 5px;
+  margin-left: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #414141;
+  border-radius: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2F2F2F;
+  border-radius: 15px;
+}
+
