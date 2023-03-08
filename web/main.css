@@ -37,7 +37,6 @@ button:active, button:focus {
 }
 .inc-or-exp{
 	text-align: center;
-	margin-left: 
 	margin-right: auto;
 	margin-top: 25px;
 	width: 100%;
@@ -60,7 +59,7 @@ button:active, button:focus {
 }
 
 
-.Expense{
+.Expenses{
 
 	width: 85px;
 	display: inline-block;
@@ -72,7 +71,7 @@ button:active, button:focus {
 	width: 85px;
 	display: inline-block;
 	margin-top: 5px;
-	margin-left: -10px;
+	margin-left: -4px;
 }
 
 
@@ -175,11 +174,11 @@ button:active, button:focus {
 .history{
 	width: 100%;
 	height: 100%;
-	margin-top: 25px;
+	margin-top: -10px;
 	overflow: auto;
 }
 
-.incomes-history-page{
+.history-page{
 	width: 100%;
 	height: 150px;
 	margin-left: auto;
@@ -187,27 +186,7 @@ button:active, button:focus {
 	border-radius: 5px;
 }
 
-.expenses-history-page{
-	width: 100%;
-	height: 150px;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 5px;
-}
-.rest-history-page{
-	width: 100%;
-	height: 150px;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 5px;	
-}
-.debts-history-page{
-	width: 100%;
-	height: 150px;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 5px;
-}
+
 
 .show-data{
 	position: relative;
@@ -220,6 +199,9 @@ button:active, button:focus {
 	border: solid 1px #1B262C;
 	margin-top: 50px;
 
+}
+.show-data-debt{
+	width: 100%;
 }
 .by-tags-exp{
 	margin-left: 10px;
@@ -289,7 +271,13 @@ button:active, button:focus {
 	color: #fff;
 	font-size: 25px;
 }
-
+#lenders-name{
+	color: white;
+	font-size: 25px;
+	float: left;
+	margin-left: 5%;
+	width: 100%;
+}
 /* width */
 ::-webkit-scrollbar{
   width: 5px;
