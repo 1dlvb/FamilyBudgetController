@@ -38,12 +38,11 @@
         <div class="inc-or-exp">
                 <div class="Income" id="Incomes-open">
                     <button class="btn btn-secondary"  onclick="OpenIncomeWindow();" id="option1">Incomes</button>
-
                 </div>
 
-                <div class="Expense" id="Expenses-open">
+                <div class="Expenses" id="Expenses-open">
                     <input onclick="OpenExpenseWindow();" type="button" class="btn-check" name="options" id="option2">
-                    <label class="btn btn-secondary" for="option2">Expense</label>
+                    <label class="btn btn-secondary" for="option2">Expenses</label>
                 </div>
 
                 <div class="Debts" id="Debts-open">
@@ -82,8 +81,8 @@
                                 </div>
                         </div>
                         </div>
-                        <div class="alert alert-danger " role="alert" id="alert-money-inc" style="display: none">
-                            Error! Check that the entered data is correct!
+                        <div class="alert alert-danger" role="alert" id="alert-money-inc" style="display: none">
+                            Error! Check the correctness of the entered data!
                         </div>
                         <button class="btn btn-secondary" onclick="income(); clear_values_incomes();">Send</button>
 
@@ -124,7 +123,7 @@
                             </div>
 
                             <div class="alert alert-danger" role="alert" id="alert-money-exp" style="display: none">
-                                Error! Check that the entered data is correct!
+                                Error! Check the correctness of the entered data!
                             </div>
                             <button class="btn btn-secondary" onclick="expense(); clear_values_expenses();">Send</button>
                         </div>
@@ -154,7 +153,7 @@
                                 </div>
                              </div>
                             <div class="alert alert-danger" role="alert" id="alert-money-debt" style="display: none">
-                                Error! Check that the entered data is correct!
+                                Error! Check the correctness of the entered data!
                             </div>
 
                             <button class="btn btn-secondary" onclick="debt(); clear_values_debts();">Send</button>
@@ -164,24 +163,27 @@
 
         <!--Go to history-->
         <div class="go-to-history">
-            <button class="btn btn-secondary" id="open-history-btn" onclick="OpenHistoryWindow(); show_total_month_profit();
-            show_month_rest_of_money(); show_total_month_expenses();">Go to history page!</button>
+            <button class="btn btn-secondary" id="open-history-btn" onclick="OpenHistoryWindow(); show_monthly_data();">Go to history page!</button>
         </div>
 
         <!--History page-->
         <div class="history col-sm-12" id="history" style="display: none;">
 
-            <div id="incomes-history" style="cursor: pointer;" class="incomes-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12"
+            <div id="incomes-history" style="cursor: pointer;" class="history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12"
             onclick="learn_more_incomes();">
                 <h1 class="" id="show-total-month-profit">Your income will be here</h1>
             </div>
 
 
-            <div id="expenses-history" style="cursor: pointer;" onclick="learn_more_expenses();" class="expenses-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
+            <div id="expenses-history" style="cursor: pointer;" onclick="learn_more_expenses();" class="history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
                 <h1 id="show-total-mouth-expenses">Your expenses will be here</h1>
             </div>
 
-            <div id="rest-history" class="rest-history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
+            <div id="debts-history" style="cursor: pointer;" onclick="learn_more_debts();" class="history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
+                <h1 id="show-total-mouth-debts">Your debts will be here</h1>
+            </div>
+
+            <div id="rest-history" class="history-page bg-secondary mb-5 d-flex justify-content-center align-items-center col-sm-12">
                 <h1 id="show-month-rest-money">Your rest will be here</h1>
             </div>
 
@@ -189,17 +191,18 @@
 
         </div>
 
-        <!--Learn More income page -->
+        <!--Learn More pages -->
+        <!--    incomes    -->
         <div class="learn-more" id="learn-more-incomes" style="display: none;">
             <h1>Learn more about income</h1>
 
             <div class="date">
                 <div class="input-group">
-                    <input class="form-control date date-month mt-5 " id="select-month-income" value="2019-09" type="month" onkeydown="return false" placeholder="Enter the date...">
+                    <input class="form-control date date-month mt-5 " id="select-month-income" value="2023-01" type="month" onkeydown="return false" placeholder="Enter the date...">
                 </div>
             </div>
             <div class="alert alert-danger" role="alert" id="alert-learn-more-inc" style="display: none">
-                Error! Check that the entered data is correct!
+                Error! Check the correctness of the entered data!
             </div>
             <button onclick="get_data_from_learn_more_inc(); show_selected_month_incomes();" class="btn btn-secondary">Send</button>
             <div id="show-data-inc" class="show-data bg-secondary" >
@@ -213,23 +216,23 @@
 
                 </div>
                 <div class="all">
-                    <h1 id="show-inc">All income for the selected month: </h1>
+                    <h1 id="show-inc">All income for the selected month </h1>
                 </div>
             </div>
         </div>
 
-        <!--Learn More expenses page -->
+        <!--  expenses  -->
         <div class="learn-more" id="learn-more-expenses" style="display: none;">
             <h1>Learn more about expenses</h1>
 
             <div id="select-month-expenses" class="select-month">
                 <div class="date">
                     <div class="input-group">
-                        <input class="form-control date date-month mt-5" id="select-month-expense" value="2021-01" type="month" onkeydown="return false" placeholder="Enter the date...">
+                        <input class="form-control date date-month mt-5" id="select-month-expense" value="2023-01" type="month" onkeydown="return false" placeholder="Enter the date...">
                     </div>
                 </div>
                 <div class="alert alert-danger" role="alert" id="alert-learn-more-exp" style="display: none">
-                    Error! Check that the entered data is correct!
+                    Error! Check the correctness of the entered data!
                 </div>
                 <button onclick="get_data_from_learn_more_exp(); show_selected_month_expenses();" class="btn btn-secondary">Send</button>
             </div>
@@ -249,7 +252,34 @@
                         <p class="tag-exp-selected-month" id="Sport-tag">Sport: </p>
                 </div>
                 <div class="all">
-                    <h1 id="show-exp">All expenses for the selected month: </h1>
+                    <h1 id="show-exp">All expenses for the selected month </h1>
+                </div>
+            </div>
+        </div>
+
+        <!--  debts  -->
+        <div class="learn-more" id="learn-more-debts" style="display: none;">
+            <h1>Learn more about debts</h1>
+
+            <div id="select-month-debts" class="select-month">
+                <div class="date">
+                    <div class="input-group">
+                        <input class="form-control date date-month mt-5" id="select-month-debt" value="2023-01" type="month" onkeydown="return false" placeholder="Enter the date...">
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" id="alert-learn-more-debt" style="display: none">
+                    Error! Check the correctness of the entered data!
+                </div>
+                <button onclick="get_data_from_learn_more_debt(); show_selected_month_debts();" class="btn btn-secondary">Send</button>
+            </div>
+
+
+            <div id="show-data-debt" class="show-data bg-secondary" >
+                <div id="by-names" class="by-names-debt" style="overflow-y: scroll; overflow-x: hidden; width: 100%; height: 80%;">
+
+                </div>
+                <div class="all">
+                    <h1 id="show-debt">All debts for the selected month </h1>
                 </div>
             </div>
         </div>
