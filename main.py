@@ -476,7 +476,7 @@ def show_selected_month_incomes_py():
 
 # show expenses for selected month
 @eel.expose
-def show_selected_month_data_py():
+def show_selected_month_expenses_py():
     cost = cur.execute("SELECT selected_month_cost FROM budget").fetchone()[0]
     data = cur.execute("SELECT data_exp FROM budget").fetchone()[0]
     return cost, data
