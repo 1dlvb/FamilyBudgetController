@@ -23,7 +23,7 @@
 - `incomes_py` sends the selected tag, the amount of income and the date to JS.
 - `expenses_py` sends the selected tag, the amount of spending and the date to JS.
 - `debts_py` sends to JS the name of the borrower, the amount of the loan and the date.
-- `show_monthly_data_py` sends data for the current month to JS: `month_profit`, `month_expenses`, `month_last`, `month_debt'.
+- `show_monthly_data_py` sends data for the current month to JS: `month_profit`, `month_expenses`, `month_last`, `month_debt`.
 - `get_and_show_selected_month_data_py` gets data from JS and adds it to the database by the selected key.
 - `show_selected_month_incomes_py` sends revenue data for the current month to JS.
 - `show_selected_month_expenses_py` sends spending data for the current month to JS.
