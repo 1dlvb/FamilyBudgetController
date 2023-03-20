@@ -1,14 +1,14 @@
-var a = 1;
+let a = 1;
 
 //now Date
-var nowDate = new Date().toISOString().slice(0, 10);
-var nowDate_ = new Date()
-var nowYear = nowDate_.getFullYear();
-var nowMonth = nowDate_.getMonth() + 1;
-var nowDay = nowDate_.getDay();
+let nowDate = new Date().toISOString().slice(0, 10);
+let nowDate_ = new Date()
+let nowYear = nowDate_.getFullYear();
+let nowMonth = nowDate_.getMonth() + 1;
+let nowDay = nowDate_.getDay();
 
 function OpenIncomeWindow()
-{		
+{
 	document.getElementById("ExpenseWindow").style.display = "none";
 	document.getElementById("DebtWindow").style.display = "none";
 	document.getElementById("open-history-btn").style.display = 'none';
@@ -47,7 +47,7 @@ function OpenExpenseWindow()
 	{
 		document.getElementById("ExpenseWindow").style.display = "none";
 		document.getElementById("open-history-btn").style.display = 'inline-block';
-		
+
 		return a = 1;
 
 	}
@@ -82,16 +82,16 @@ function OpenDebtsWindow()
 }
 
 async function income(){
-	//Resived money
-	var amg_js = document.querySelector("#amountOfMoneyGet").value;
+	//Received money
+	let amg_js = document.querySelector("#amountOfMoneyGet").value;
 	//date
-	var date_js_inc = new Date(document.querySelector("#dateInc").value).toISOString().slice(0, 10);
+	let date_js_inc = new Date(document.querySelector("#dateInc").value).toISOString().slice(0, 10);
 
 
 	//tag variables
-	var selInc = document.getElementById("inputTagSelectInc").selectedIndex;
-	var optionsInc = document.getElementById("inputTagSelectInc").options;
-	var tag_inc_js = optionsInc[selInc].text;
+	let selInc = document.getElementById("inputTagSelectInc").selectedIndex;
+	let optionsInc = document.getElementById("inputTagSelectInc").options;
+	let tag_inc_js = optionsInc[selInc].text;
 
 	if ((amg_js < 0.01) || (date_js_inc > nowDate)) {
 
@@ -114,18 +114,18 @@ async function income(){
 
 
 function expense(){
-	//spenet money variable
-	var ams_js = document.querySelector("#amountOfMoneySpent").value;
+	//spent money variable
+	let ams_js = document.querySelector("#amountOfMoneySpent").value;
 	//date
-	var date_js_exp = new Date(document.querySelector("#dateExp").value).toISOString().slice(0, 10);
+	let date_js_exp = new Date(document.querySelector("#dateExp").value).toISOString().slice(0, 10);
 
 
 
 
 	//tag variables
-	var selExp = document.getElementById('inputTagSelectExp').selectedIndex;
-	var optionsExp = document.getElementById('inputTagSelectExp').options;
-	var tag_exp_js = optionsExp[selExp].text;
+	let selExp = document.getElementById('inputTagSelectExp').selectedIndex;
+	let optionsExp = document.getElementById('inputTagSelectExp').options;
+	let tag_exp_js = optionsExp[selExp].text;
 
 	if ((ams_js < 0.01) ||(date_js_exp > nowDate)) {
 		//show error
@@ -148,13 +148,13 @@ function expense(){
 
 
 function debt(){
-	//Resived money
-	var amount_of_debt_js = document.querySelector('#amount-of-debt').value;
+	//Received money
+	let amount_of_debt_js = document.querySelector('#amount-of-debt').value;
 	//date
-	var date_js_debt = new Date(document.querySelector("#dateDebt").value).toISOString().slice(0, 10);
+	let date_js_debt = new Date(document.querySelector("#dateDebt").value).toISOString().slice(0, 10);
 
 	//name variables
-	var moneylenders_name_js = document.querySelector('#moneylenders-name').value;
+	let moneylenders_name_js = document.querySelector('#moneylenders-name').value;
 
 
 	if ((amount_of_debt_js < 0.01)||(isEmpty(moneylenders_name_js)) || ((date_js_debt > nowDate) && (date_js_debt != null)) ){
@@ -163,16 +163,16 @@ function debt(){
 	}
 	else
 	{
-		
+
 		//hide error
 		document.getElementById("alert-money-debt").style.display = 'none';
-		
+
 		eel.debts_py(moneylenders_name_js, amount_of_debt_js, date_js_debt)
 
-		
+
 
 	}
-}	
+}
 
 
 function isEmpty(str){
@@ -211,7 +211,7 @@ function clear_values_debts(){
 
 
 function OpenHistoryWindow()
-{	
+{
 	a = 0;
 	document.getElementById("Incomes-open").style.display = "none";
 	document.getElementById("Expenses-open").style.display = "none";
@@ -219,7 +219,7 @@ function OpenHistoryWindow()
 	document.getElementById("open-history-btn").style.display = 'none';
 	document.getElementById("go-home-btn").style.display = 'block';
 	document.getElementById("header").style.display = 'none';
-	
+
 	//history page
 	document.getElementById("history").style.display = 'none';
 
@@ -230,7 +230,7 @@ function OpenHistoryWindow()
 		document.getElementById("Expenses-open").style.display = "block";
 		document.getElementById("Debts-open").style.display = "block";
 		document.getElementById("header").style.display = 'block';
-			
+
 		//history page
 		document.getElementById("history").style.display = 'none';
 
@@ -242,10 +242,10 @@ function OpenHistoryWindow()
 		document.getElementById("Expenses-open").style.display = "none";
 		document.getElementById("Debts-open").style.display = "none";
 		document.getElementById("header").style.display = 'none';
-		
-		//history page 
+
+		//history page
 		document.getElementById("history").style.display = 'block';
-		
+
 		return a = 1;
 
 	}
@@ -362,9 +362,9 @@ function learn_more_debts(){
 
 function get_data_from_learn_more_inc(){
 	document.getElementById("alert-learn-more-inc").style.display = 'none';
-	var date = new Date(document.querySelector("#select-month-income").value);
-	var year = date.getFullYear();
-	var month = date.getMonth() + 1; 
+	let date = new Date(document.querySelector("#select-month-income").value);
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
 	if (month < 10) {
 
 		month = '0' + month;
@@ -373,29 +373,29 @@ function get_data_from_learn_more_inc(){
 		month = "" + month;
 	}
 
-	if ((year > nowYear) || (month < nowMonth && year > nowYear) || 
+	if ((year > nowYear) || (month < nowMonth && year > nowYear) ||
 		(month > nowMonth && year >= nowYear))
 	{
-		
+
 		document.getElementById("alert-learn-more-inc").style.display = 'block';
 		document.getElementById("show-data-inc").style.display = 'none';
 
-		
+
 	}
 	else {
 		document.getElementById("show-data-inc").style.display = 'flex';
 		eel.get_and_show_selected_month_data_py(month, year, "inc")
-		document.getElementById("alert-learn-more-inc").style.display = 'none';		
-		
+		document.getElementById("alert-learn-more-inc").style.display = 'none';
+
 	}
-	
+
 
 }
 function get_data_from_learn_more_exp(){
 	document.getElementById("alert-learn-more-exp").style.display = 'none';
-	var date = new Date(document.querySelector("#select-month-expense").value);
-	var year = date.getFullYear();
-	var month = date.getMonth() + 1; 
+	let date = new Date(document.querySelector("#select-month-expense").value);
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
 	if (month < 10) {
 
 		month = '0' + month;
@@ -404,29 +404,29 @@ function get_data_from_learn_more_exp(){
 		month = "" + month;
 	}
 
-	if ((year > nowYear) || (month < nowMonth && year > nowYear) || 
+	if ((year > nowYear) || (month < nowMonth && year > nowYear) ||
 		(month > nowMonth && year >= nowYear))
 	{
-		
+
 		document.getElementById("alert-learn-more-exp").style.display = 'block';
 		document.getElementById("show-data-exp").style.display = 'none';
 
 
-		
+
 	}
 	else {
 		document.getElementById("show-data-exp").style.display = 'flex';
 		eel.get_and_show_selected_month_data_py(month, year, "exp");
-		
+
 		document.getElementById("alert-learn-more-exp").style.display = 'none';
 	}
 }
 
 function get_data_from_learn_more_debt(){
 	document.getElementById("alert-learn-more-debt").style.display = 'none';
-	var date = new Date(document.querySelector("#select-month-debt").value);
-	var year = date.getFullYear();
-	var month = date.getMonth() + 1;
+	let date = new Date(document.querySelector("#select-month-debt").value);
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
 	if (month < 10) {
 
 		month = '0' + month;
@@ -456,57 +456,57 @@ function get_data_from_learn_more_debt(){
 
 async function show_selected_month_incomes(){
 	//selected month profit
-	let arr =  await eel.show_selected_month_incomes_py()();	
+	let arr =  await eel.show_selected_month_incomes_py()();
 	profit = arr[0];
 	data = arr[1];
 	document.getElementById("show-inc").innerHTML = "All income for the selected month: </br>" + profit.toFixed(2) + " ₽";
 
 	let Salary_sum = 0;
-	let Upfront_sum = 0; 
-	let Pay_debt_sum = 0; 
+	let Upfront_sum = 0;
+	let Pay_debt_sum = 0;
 	let Found_sum = 0;
 	let Investment_sum = 0;
 	i = 0
-	var s_data = data.split(";");
+	let s_data = data.split(";");
 	while (i < s_data.length) {
-		var s_s_data = s_data[i].split(" ");
+		let s_s_data = s_data[i].split(" ");
 
-		if (s_s_data[0] == ''){
-			if (s_s_data[1] == 'Salary'){
+		if (s_s_data[0] === ''){
+			if (s_s_data[1] === 'Salary'){
 				Salary_sum += parseFloat(s_s_data[2]);
 			}
-			else if (s_s_data[1] == 'Upfront') {
+			else if (s_s_data[1] === 'Upfront') {
 				Upfront_sum += parseFloat(s_s_data[2]);
 			}
-			else if (s_s_data[1] == 'Pay') {
+			else if (s_s_data[1] === 'Pay') {
 				Pay_debt_sum += parseFloat(s_s_data[3]);
 			}
-			else if (s_s_data[1] == 'Found') {
+			else if (s_s_data[1] === 'Found') {
 				Found_sum += parseFloat(s_s_data[2]);
 			}
-			if (s_s_data[1] == 'Investment') {
+			if (s_s_data[1] === 'Investment') {
 				Investment_sum += parseFloat(s_s_data[2]);
 			}
-			
-			
-			
+
+
+
 		}else{
-			if (s_s_data[0] == 'Salary'){
+			if (s_s_data[0] === 'Salary'){
 				Salary_sum += parseFloat(s_s_data[1]);
 			}
-			else if (s_s_data[0] == 'Upfront') {
+			else if (s_s_data[0] === 'Upfront') {
 				Upfront_sum += parseFloat(s_s_data[1]);
 			}
-			else if (s_s_data[0] == 'Pay') {
+			else if (s_s_data[0] === 'Pay') {
 				Pay_debt_sum += parseFloat(s_s_data[2]);
 			}
-			else if (s_s_data[0] == 'Found') {
+			else if (s_s_data[0] === 'Found') {
 				Found_sum += parseFloat(s_s_data[1]);
 			}
-			if (s_s_data[0] == 'Investment') {
+			if (s_s_data[0] === 'Investment') {
 				Investment_sum += parseFloat(s_s_data[1]);
 			}
-			
+
 		}
 
 		i++;
@@ -522,86 +522,87 @@ document.getElementById("Investment-inc-tag").innerHTML = "Investment: " + Inves
 
 async function show_selected_month_expenses(){
 	//selected month cost
-	let arr =  await eel.show_selected_month_data_py()();	
+	let arr = await eel.show_selected_month_expenses_py()();
+	console.log(arr)
 	let cost = arr[0];
 	let data = arr[1];
 	document.getElementById("show-exp").innerHTML = "All expenses for the selected month: </br>" + cost.toFixed(2) + " ₽";
 	let Other_sum = 0;
-	let Credits_sum = 0; 
-	let Utility_bills_sum = 0; 
+	let Credits_sum = 0;
+	let Utility_bills_sum = 0;
 	let Snacks_sum = 0;
 	let Food_sum = 0;
-	let Medical_sum = 0; 
-	let Investment_sum = 0; 
-	let Sport_sum = 0; 
+	let Medical_sum = 0;
+	let Investment_sum = 0;
+	let Sport_sum = 0;
 
 
 	i = 0
-	var s_data = data.split(";");
+	let s_data = data.split(";");
 	while (i < s_data.length) {
-		var s_s_data = s_data[i].split(" ");
-		if (s_s_data[0] == ''){
-			if (s_s_data[1] == 'Other'){
+		let s_s_data = s_data[i].split(" ");
+		if (s_s_data[0] === ''){
+			if (s_s_data[1] === 'Other'){
 				Other_sum += parseFloat(s_s_data[2]);
 			}
-			else if (s_s_data[1] == 'Credits') {
+			else if (s_s_data[1] === 'Credits') {
 				Credits_sum += parseFloat(s_s_data[2]);
 			}
-			else if (s_s_data[1] == 'Utility'){
+			else if (s_s_data[1] === 'Utility'){
 				Utility_bills_sum += parseFloat(s_s_data[3]);
 
 			}
-			else if (s_s_data[1] == 'Snacks'){
+			else if (s_s_data[1] === 'Snacks'){
 				Snacks_sum += parseFloat(s_s_data[2]);
 
 			}
-			else if (s_s_data[1] == 'Food'){
+			else if (s_s_data[1] === 'Food'){
 				Food_sum += parseFloat(s_s_data[2]);
 
 			}
-			else if (s_s_data[1] == 'Medical'){
+			else if (s_s_data[1] === 'Medical'){
 				Medical_sum += parseFloat(s_s_data[2]);
 
 			}
-			else if (s_s_data[1] == 'Investment'){
+			else if (s_s_data[1] === 'Investment'){
 				Investment_sum += parseFloat(s_s_data[2]);
 
 			}
 
-			else if (s_s_data[1] == 'Sport'){
+			else if (s_s_data[1] === 'Sport'){
 				Sport_sum += parseFloat(s_s_data[2]);
 
 			}
 		}else{
-			if (s_s_data[0] == 'Other'){
+			if (s_s_data[0] === 'Other'){
 				Other_sum += parseFloat(s_s_data[1]);
 
 			}
-			else if (s_s_data[0] == 'Credits') {
+			else if (s_s_data[0] === 'Credits') {
 				Credits_sum += parseFloat(s_s_data[1]);
 			}
-			else if (s_s_data[0] == 'Utility'){
+			else if (s_s_data[0] === 'Utility'){
 				Utility_bills_sum += parseFloat(s_s_data[2]);
 
 			}
-			else if (s_s_data[0] == 'Snacks'){
+			else if (s_s_data[0] === 'Snacks'){
 				Snacks_sum += parseFloat(s_s_data[1]);
 
 			}
-			else if (s_s_data[0] == 'Food'){
+			else if (s_s_data[0] === 'Food'){
 				Food_sum += parseFloat(s_s_data[1]);
 
 			}
-			else if (s_s_data[0] == 'Medical'){
+			else if (s_s_data[0] === 'Medical'){
 				Medical_sum += parseFloat(s_s_data[1]);
 
 			}
-			else if (s_s_data[0] == 'Investment'){
+			else if (s_s_data[0] === 'Investment'){
 				Investment_sum += parseFloat(s_s_data[1]);
 
 			}
 
-			else if (s_s_data[0] == 'Sport'){
+			else if (s_s_data[0] === 'Sport'){
 				Sport_sum += parseFloat(s_s_data[1]);
 
 			}
@@ -634,7 +635,6 @@ async function show_selected_month_debts(){
 
 	let total_debt = arr[0];
 	let data = arr[1].split(";");
-	// console.log(data);
     document.getElementById("show-debt").innerHTML = "All debts for the selected month: </br>" + total_debt.toFixed(2) + " ₽";
     i = 0;
     while (i < data.length - 1) {
