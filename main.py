@@ -64,32 +64,6 @@ eel.init('web')
 
 
 # auxiliary functions
-def get_num_of_rows_inc():                            # Get number of incomes table rows
-    rows_query_inc = "SELECT Count() FROM incomes"
-    cur.execute(rows_query_inc)
-    number_of_rows_inc = cur.fetchone()[0]
-    return number_of_rows_inc
-
-
-def get_num_of_rows_exp():                            # Get number of expenses table rows
-    rows_query_exp = "SELECT Count() FROM expenses"
-    cur.execute(rows_query_exp)
-    number_of_rows_exp = cur.fetchone()[0]
-    return number_of_rows_exp
-
-
-def get_num_of_rows_debts():                            # Get number of expenses table rows
-    rows_query_debt = "SELECT Count() FROM debts"
-    cur.execute(rows_query_debt)
-    number_of_rows_debt = cur.fetchone()[0]
-    return number_of_rows_debt
-
-
-def get_num_of_rows_budget():                            # Get number of budget table rows
-    rows_query_budget = "SELECT Count() FROM budget"
-    cur.execute(rows_query_budget)
-    number_of_rows_budget = cur.fetchone()[0]
-    return number_of_rows_budget
 
 
 # Shorten the date
@@ -173,14 +147,13 @@ def incomes_py(tag_inc_js, amg_js, date_js_inc):
     tag = tag_inc_js
     amount = round(float(amg_js), 2)
     date = str(date_js_inc)
-    num_of_rows = get_num_of_rows_inc()
 
     # add values to database
     cur.execute("INSERT INTO incomes (tag_incomes, profit_amount, date) VALUES (?, ?, ?)", (tag, amount, date))
     db.commit()
 
     # month
-    if (num_of_rows > 0) and (does_the_match_month(date, now) is True):
+    if does_the_match_month(date, now) is True:
         amount = cur.execute("SELECT profit_amount FROM incomes WHERE id=?", [l_id_inc()]).fetchone()[0]
         cur.execute("UPDATE budget SET month_profit = month_profit + (?)", [amount])
         db.commit()
@@ -188,10 +161,9 @@ def incomes_py(tag_inc_js, amg_js, date_js_inc):
         print("Incomes problem!")
 
     # year
-    if (num_of_rows > 0) and (does_the_match_month(date, now) is True):
+    if does_the_match_month(date, now) is True:
         cur.execute("UPDATE budget SET year_profit = year_profit + (?)", [amount])
         db.commit()
-
 
     return tag, amount, date
 
@@ -202,14 +174,13 @@ def expenses_py(tag_exp_js, ams_js, date_js_exp):
     tag = tag_exp_js
     amount = round(float(ams_js), 2)
     date = str(date_js_exp)
-    num_of_rows = get_num_of_rows_exp()
 
     # add values to database
     cur.execute("INSERT INTO expenses (tag_expenses, spent_amount, date) VALUES(?,?, ?)", (tag, amount, date))
     db.commit()
 
     # month
-    if (num_of_rows > 0) and (does_the_match_month(date, now) is True):
+    if does_the_match_month(date, now) is True:
         amount = cur.execute("SELECT spent_amount FROM expenses WHERE id=?", [l_id_exp()]).fetchone()[0]
         cur.execute("UPDATE budget SET month_spent = month_spent + (?)", [amount])
         db.commit()
@@ -217,7 +188,7 @@ def expenses_py(tag_exp_js, ams_js, date_js_exp):
         print("Expenses problem!")
 
     # year
-    if (num_of_rows > 0) and (does_the_match_year(date, now) is True):
+    if does_the_match_year(date, now) is True:
         cur.execute("UPDATE budget SET year_spent = year_spent + (?)", [amount])
         db.commit()
 
@@ -230,14 +201,13 @@ def debts_py(moneylenders_name_js, amount_of_debt_js, date_js_debt):
     name = moneylenders_name_js
     amount = round(float(amount_of_debt_js), 2)
     date = str(date_js_debt)
-    num_of_rows = get_num_of_rows_debts()
 
     # add values to database
     cur.execute("INSERT INTO debts (moneylenders_name, debt_amount, date) VALUES(?,?, ?)", (name, amount, date))
     db.commit()
 
     # month
-    if (num_of_rows > 0) and (does_the_match_month(date, now) is True):
+    if does_the_match_month(date, now) is True:
         amount = cur.execute("SELECT debt_amount FROM debts WHERE id=?", [l_id_debts()]).fetchone()[0]
         cur.execute("UPDATE budget SET month_debt = month_debt + (?)", [amount])
         db.commit()
@@ -245,6 +215,7 @@ def debts_py(moneylenders_name_js, amount_of_debt_js, date_js_debt):
         print("Debts problem!")
 
     return name, amount, date
+
 
 @eel.expose
 def show_monthly_data_py():
@@ -269,7 +240,6 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
     month_debts_id = []
     selected_debt_id = []
     month_debts = []
-
 
     s_dates = []
     split_date = []
@@ -307,11 +277,9 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
 
                 is_m_and_y_match = True
 
-
             else:
                 is_m_and_y_match = False
 
-            # HERE
             # get month expenses from db
             if is_m_and_y_match is True:
                 month_incomes_id.append(cur.execute("SELECT id FROM incomes WHERE date=?", [s_dates[i]]).fetchall())
@@ -333,7 +301,6 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
             i += 1
         for value in month_incomes:
             for value1 in value:
-
                 tags.append((value1[0]))
                 values.append(value1[1])
                 total_month_incomes += value1[1]
@@ -345,7 +312,7 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
             data += (tags[i] + ' ' + str(values[i]) + '; ')
             i += 1
 
-        # send data to to db
+        # send data to db
         cur.execute("UPDATE budget SET data_inc = (?)", [data])
         db.commit()
 
@@ -367,11 +334,9 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
 
                 is_m_and_y_match = True
 
-
             else:
                 is_m_and_y_match = False
 
-            # HERE
             # get month expenses from db
             if is_m_and_y_match is True:
                 month_expenses_id.append(cur.execute("SELECT id FROM expenses WHERE date=?", [s_dates[i]]).fetchall())
@@ -403,7 +368,7 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
             data += (tags[i] + ' ' + str(values[i]) + '; ')
             i += 1
 
-        # send data to to db
+        # send data to db
         cur.execute("UPDATE budget SET data_exp = (?)", [data])
         db.commit()
 
@@ -424,7 +389,6 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
 
                 is_m_and_y_match = True
 
-
             else:
                 is_m_and_y_match = False
 
@@ -444,7 +408,7 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
         i = 0
         while i < len(unique_selected_debt_id):
             month_debts.append(cur.execute("SELECT moneylenders_name, debt_amount FROM debts WHERE id=?",
-                                              [unique_selected_debt_id[i]]).fetchall())
+                                           [unique_selected_debt_id[i]]).fetchall())
             i += 1
         for value in month_debts:
             for value1 in value:
@@ -459,11 +423,12 @@ def get_and_show_selected_month_data_py(selected_month_js, selected_year_js, whe
             data += (moneylenders_name[i] + '|' + str(debt_amount[i]) + ';')
             i += 1
 
-        # send data to to db
+        # send data to db
         cur.execute("UPDATE budget SET data_debt = (?)", [data])
         db.commit()
 
-    else: Exception
+    else:
+        print('ERROR')
 
 
 # show incomes for selected month
