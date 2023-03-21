@@ -328,7 +328,7 @@ async function show_monthly_data(){
 		document.getElementById("show-month-rest-money").style.color="#fff";
 
 	}
-	document.getElementById("show-month-rest-money").innerHTML = "The rest of the money this year: " + rest.toFixed(2) + " ₽";
+	document.getElementById("show-month-rest-money").innerHTML = "The rest of the money this month: " + rest.toFixed(2) + " ₽";
 
 }
 
