@@ -4,7 +4,7 @@
 
 * `get_num_of_rows` отвечает за вывод строк в базе данных.
 * `get_incomes_from_db` отвечает за получение всех доходов из базы за выбраный месяц.
-* `does_the_match_month` проверяет совпадает ли выбранная дата с текущей.
+* `does_the_month_matches` проверяет совпадает ли выбранная дата с текущей.
 * `incomes_py` отправляет в JS выбранный тэг, размер дохода и дату.
 * `expenses_py` отправляет в JS выбранный тэг, размер траты и дату.
 * `debts_py` отправляет в JS имя дающего взаймы, размер займа и дату.
@@ -19,7 +19,7 @@
 
 - `get_num_of_rows` is responsible for outputting rows in the database.
 - `get_incomes_from_db` is responsible for receiving all income from the database for the selected month.
-- `does_the_match_month` checks whether the selected date matches the current one.
+- `does_the_month_matches` checks whether the selected date matches the current one.
 - `incomes_py` sends the selected tag, the amount of income and the date to JS.
 - `expenses_py` sends the selected tag, the amount of spending and the date to JS.
 - `debts_py` sends to JS the name of the borrower, the amount of the loan and the date.
